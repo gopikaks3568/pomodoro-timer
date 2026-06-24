@@ -64,7 +64,7 @@ def count_down(count):
     if count == 0 :
         reps += 1
         text = "✔"
-        session = 1
+
 
         if reps % 2 != 0:
             new_text += text
@@ -96,9 +96,11 @@ reset_button.grid(row=3, column=3)
 tick_counter_label = Label(text=" ",fg=GREEN, font=(FONT_NAME, 20, "bold"), bg=YELLOW,pady=30)
 tick_counter_label.grid(row=3, column=1)
 
-
-
-
-
-
 window.mainloop()
+"""
+Future Enhancements:
+1. Manual setting for session duration, session count, break time 
+2. Sound effects like chime duration starting of break time 
+3. Tomato icon as session count 
+4. Optional background effect during study time like : ASMR/ fire cracking sound 
+"""
