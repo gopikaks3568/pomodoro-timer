@@ -21,20 +21,6 @@ def reset_timer():
     canvas.itemconfig(timer_text, text="00:00")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 
 def start_timer():
