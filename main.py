@@ -6,13 +6,30 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 1
-SHORT_BREAK_MIN = 1
+WORK_MIN = 25
+SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 reps = 1
 new_text = "✔"
+timer = None
 
 # ---------------------------- TIMER RESET ------------------------------- #
+def reset_timer():
+    window.after_cancel(timer)
+    timer_label.config(text= "Timer", fg=GREEN,bg= YELLOW)
+    tick_counter_label.config(text=" ")
+    canvas.itemconfig(timer_text, text="00:00")
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -25,7 +42,6 @@ def start_timer():
     work_sec = WORK_MIN * 60
     short_break_sec = SHORT_BREAK_MIN * 60
     long_break_sec = LONG_BREAK_MIN * 60
-
 
     if reps % 2 != 0:
         global new_text
@@ -54,7 +70,8 @@ def count_down(count):
 
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
-        window.after(1000, count_down,count -1)
+        global timer
+        timer = window.after(1000, count_down,count -1)
 
 
 
@@ -86,11 +103,11 @@ start_button = Button(text= "Start", command=start_timer)
 start_button.config(font=FONT_NAME)
 start_button.grid(row=3, column=0)
 
-reset_button = Button(text= "Reset")
+reset_button = Button(text= "Reset", command=reset_timer)
 reset_button.config(font=FONT_NAME)
 reset_button.grid(row=3, column=3)
 
-tick_counter_label = Label(text="✔",fg=GREEN, font=(FONT_NAME, 20, "bold"), bg=YELLOW,pady=30)
+tick_counter_label = Label(text=" ",fg=GREEN, font=(FONT_NAME, 20, "bold"), bg=YELLOW,pady=30)
 tick_counter_label.grid(row=3, column=1)
 
 
